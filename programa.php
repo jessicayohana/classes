@@ -10,18 +10,17 @@ require "classes/Conta.php";
 
 $minhaConta = new Conta();
 
-$minhaConta ->dono = "Jessica";
-$minhaConta ->numeroConta="145826";
-$minhaConta ->saldo = "508.80";
+$minhaConta->dono = "Jessica";
+$minhaConta->numeroConta="145826";
 
-$minhaConta ->deposita(900);
+$minhaConta->deposita(500);
 
-$conseguiSacar = $minhaConta ->saca(400);
+$minhaConta->saca(200);
 
-if($conseguiSacar){
-    echo "Consegui sacar\n";
-}else{
-    echo "Saldo insuficiente para sacar\n";
-}
+$minhaMae = new Conta();
 
-echo "O cliente {$minhaConta ->dono} possui o saldo de {$minhaConta ->saldo}";
+$minhaMae->dono = "Lilian";
+
+$minhaConta -> transferePara($minhaMae,300);
+
+print "O cliente {$minhaConta->dono} tem {$minhaConta->getSaldo()} de saldo";
