@@ -10,10 +10,16 @@ class Conta
 {
   public $numeroConta;
   public $dono;
-  public $saldo;
+  private $saldo = 0;
 
-  public function deposita($valor){
-      $this -> saldo = $this -> saldo + $valor;
+
+  public function getSaldo():float
+    {
+        return $this->saldo;
+    }
+
+  public function deposita(float $valor){
+      $this -> saldo +=  $valor;
   }
 
   public function saca(float $valor){
@@ -25,4 +31,18 @@ class Conta
           return false;
       }
   }
+
+   public function transferePara(Conta $contaDestino, float $valor){
+
+      //sacar dinheiro da minha conta
+      $deuCerto =  $this -> saca($valor);
+
+      if($deuCerto);{
+
+           //depositar o dinheiro na conta destino
+          $contaDestino -> deposita($valor);
+       }
+
+   }
+
 }
